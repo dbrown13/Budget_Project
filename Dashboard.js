@@ -176,4 +176,4 @@ function errorMessageFunction(message) {
       errorMessage.classList.remove('error')
     }, 2500);
 }
-export {budgetValue};
+//export {budgetValue};
