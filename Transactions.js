@@ -13,7 +13,6 @@ const expenseCard = document.querySelector(".expenses_card");
 
 let itemList = [];
 let itemId = 0;
-//alert("Budget Value: "+budgetValue);
 
 // Button Events
 function buttonEvents() {
