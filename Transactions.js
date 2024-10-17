@@ -34,45 +34,53 @@ document.addEventListener("DOMContentLoaded", buttonEvents);
 
 function retrieveBudget() {
     const sumBudget = sessionStorage.getItem("sumBudget");
-    alert("Stored input:"+ sumBudget);
+    console.log("Stored input:"+ sumBudget);
   }
 // Expenses Function
 function expensesFunction() {
-    retrieveBudget();
-  let expensesDescValue = expensesDesc.value;
-  let expensesAmountValue = expensesAmount.value;
+    //retrieveBudget();
+    let expensesDescValue = expensesDesc.value;
+    let expensesAmountValue = expensesAmount.value;
   
-  //if (expensesDescValue == "" || expensesAmountValue == "" || budgetInput < 0) {
-  if (expensesDescValue == "" || expensesAmountValue == "") {
-    errorMessageFunction("Please enter expenses description or expenses amount.");
-  } else {
-    let amount = parseInt(expensesAmountValue);
-    expensesAmount.value = "";
-    expensesDesc.value = "";
+    //if (expensesDescValue == "" || expensesAmountValue == "" || budgetInput < 0) {
+    if (expensesDescValue == "" || expensesAmountValue == "") {
+        errorMessageFunction("Please enter expenses description or expenses amount.");
+    } else {
+        let amount = parseInt(expensesAmountValue);
+        expensesAmount.value = "";
+        expensesDesc.value = "";
 
-    // Storing value inside object
-    let expenses = {
-      id: itemId,
-      title: expensesDescValue,
-      amount: amount,
-    };
+        // Storing value inside object
+        let expenses = {
+            id: itemId,
+            title: expensesDescValue,
+            amount: amount,
+        };
 
     //itemId++;
     itemList.push(expenses);
-    //alert(itemList[itemId].title);
-    //alert(itemList[itemId].amount);
+    //console.log(itemList[itemId].title);
+    //console.log(itemList[itemId].amount);
     itemId++;
 
     // Add expenses inside the HTML Page
     addExpenses(expenses);
     //showBalance();
+    storeExpenses();
+    storeItemList();
   }
 }
 
 // Add Expenses Function
 function addExpenses(expensesItem) {
+    console.log("In addExpenses");
+    console.log("ItemList: "+itemList);;
 
-  const html = `<ul class="table_tr_content">
+    console.log("expensesItem: "+expensesItem.title);
+    const tableRecord = document.querySelector(".table_data");
+
+
+    const html = `<ul class="table_tr_content">
                     <li data-id=${expensesItem.id}>${expensesItem.id}</li>
                     <li>${expensesItem.title}</li>
                     <li><span>$</span>${expensesItem.amount}</li>
@@ -82,7 +90,7 @@ function addExpenses(expensesItem) {
                     </li>
                 </ul>`;
 
-  tableRecord.insertAdjacentHTML("beforeend", html);
+    tableRecord.insertAdjacentHTML("beforeend", html);
 
 
   // Edit
@@ -91,21 +99,24 @@ function addExpenses(expensesItem) {
   const contentId = document.querySelectorAll('.table_tr_content');
 
   // Edit Button Event
+  console.log("Edit Button Event");
   buttonEdit.forEach((editButton) => {
     editButton.addEventListener('click', (e) => {
-        alert("edit");
-      let id;
-      contentId.forEach((ids) => {
-        id = ids.firstElementChild.dataset.id;
-        alert("id = " +id);
-      });
+        console.log("edit");
+        let id;
+        contentId.forEach((ids) => {
+            id = ids.firstElementChild.dataset.id;
+        });
 
-      let element = e.target.parentElement.parentElement;
-      element.remove();
-
-      let expenses = itemList.filter(function(item) {
-        return item.id == id;
-      })
+        let element = e.target.parentElement.parentElement;
+        element.remove();
+        console.log("itemList: "+itemList);
+        console.log("id = " +id);
+        let expenses = itemList.filter(function(item) {
+            return item.id == id;
+        })
+      console.log("expenses: "+expenses);
+      console.log("title: "+expenses[0].title);
       expensesDesc.value = expenses[0].title;
       expensesAmount.value = expenses[0].amount;
 
@@ -114,6 +125,8 @@ function addExpenses(expensesItem) {
       });
 
       itemList = temporaryExpensesList;
+      storeExpenses();
+      storeItemList();
     });
   });
 
@@ -133,7 +146,9 @@ function addExpenses(expensesItem) {
       })
 
       itemList = temporaryExpensesList;
-      showBalance();
+      //showBalance();
+      storeExpenses();
+      storeItemList();
     });
   });
 }
@@ -141,13 +156,12 @@ function addExpenses(expensesItem) {
 /* // Budget Function
 function budgetFunction() {
   const budgetValue = budgetInput.value;
-  //alert(budgetValue);
   if (budgetValue == "" || budgetValue < 0) {
     errorMessageFunction("Please enter a budget that is more than 0.");
   } else {
     budgetCard.textContent = budgetValue;
     budgetInput.value = "";
-    showBalance();
+    //showBalance();
   }
 } */
 
@@ -156,6 +170,55 @@ function showBalance() {
   const expenses = totalExpenses();
   const total = parseInt(budgetCard.textContent) - expenses;
   balanceCard.textContent = total;
+}
+// Store total expenses
+function storeExpenses() {
+    let sumExpenses = totalExpenses();
+    console.log("total expenses: "+sumExpenses);
+    //const inputValue = document.getElementById("myInput").value;
+    sessionStorage.setItem("sumExpenses", sumExpenses);
+}
+// Store item list
+function storeItemList() {
+    sessionStorage.setItem("itemList", JSON.stringify(itemList));
+    console.log("Item List: "+itemList);
+}
+function retrieveAll() {
+    console.log("retrieve all");
+    const expenseCard = document.querySelector(".expenses_card");
+    const sumExpenses = sessionStorage.getItem("sumExpenses");
+    let itemList = JSON.parse(sessionStorage.getItem("itemList"));
+    expenseCard.textContent = sumExpenses;
+    console.log(itemList[0]);
+    console.log(itemList);
+    console.log(itemList[0].id);
+
+/*     let expensesDescValue = expensesDesc.value;
+    let expensesAmountValue = expensesAmount.value;
+  
+    //if (expensesDescValue == "" || expensesAmountValue == "" || budgetInput < 0) {
+    if (expensesDescValue == "" || expensesAmountValue == "") {
+        errorMessageFunction("Please enter expenses description or expenses amount.");
+    } else {
+        let amount = parseInt(expensesAmountValue);
+        expensesAmount.value = "";
+        expensesDesc.value = "";
+
+        // Storing value inside object
+        let expenses = {
+            id: itemId,
+            title: expensesDescValue,
+            amount: amount,
+        };
+*/
+    console.log("before call:"+itemList);
+    itemList.forEach((item) => {
+        console.log(item);
+        addExpenses(item);       
+    }) 
+
+//tableRecord.insertAdjacentHTML("beforeend", html);
+  
 }
 
 // Total Expenses Function
