@@ -6,7 +6,7 @@ const tableRecord = document.querySelector(".table_data");
 //const cardsContainer = document.querySelector(".cards");
 
 // Cards
-//const budgetCard = document.querySelector(".budget_card");
+const budgetCard = document.querySelector(".budget_card");
 const expenseCard = document.querySelector(".expenses_card");
 //const balanceCard = document.querySelector(".balance_card");
 
@@ -185,9 +185,12 @@ function storeItemList() {
 }
 function retrieveAll() {
     console.log("retrieve all");
+    const budgetCard = document.querySelector(".budget_card");
     const expenseCard = document.querySelector(".expenses_card");
+    const sumBudget = sessionStorage.getItem("sumBudget");
     const sumExpenses = sessionStorage.getItem("sumExpenses");
     let itemList = JSON.parse(sessionStorage.getItem("itemList"));
+    budgetCard.textContent = sumBudget;
     expenseCard.textContent = sumExpenses;
     console.log(itemList[0]);
     console.log(itemList);
