@@ -1,5 +1,4 @@
 "use strict";
-import { budgetValue } from './Dashboard.js'; 
 
 const expensesDesc = document.querySelector(".expenses_description");
 const expensesAmount = document.querySelector(".expenses_amount");
@@ -34,8 +33,13 @@ function buttonEvents() {
 
 document.addEventListener("DOMContentLoaded", buttonEvents);
 
+function retrieveBudget() {
+    const sumBudget = sessionStorage.getItem("sumBudget");
+    alert("Stored input:"+ sumBudget);
+  }
 // Expenses Function
 function expensesFunction() {
+    retrieveBudget();
   let expensesDescValue = expensesDesc.value;
   let expensesAmountValue = expensesAmount.value;
   
