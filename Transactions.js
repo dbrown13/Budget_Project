@@ -33,8 +33,13 @@ function buttonEvents() {
 
 document.addEventListener("DOMContentLoaded", buttonEvents);
 
+function retrieveBudget() {
+    const sumBudget = sessionStorage.getItem("sumBudget");
+    alert("Stored input:"+ sumBudget);
+  }
 // Expenses Function
 function expensesFunction() {
+    retrieveBudget();
   let expensesDescValue = expensesDesc.value;
   let expensesAmountValue = expensesAmount.value;
   
