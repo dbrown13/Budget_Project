@@ -34,7 +34,7 @@ body {
   margin: 0 auto;
   background-color: var(--grey);
   border-radius: 5px;
-  box-shadow: 5px 5px 10px #000;
+  /* box-shadow: 5px 5px 10px #000; */
   overflow-x: hidden;
 }
 
@@ -45,14 +45,24 @@ body {
   color: var(--dark);
 }
 
+.container h3 {
+  padding: 2rem 0;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--dark);
+}
+
 .navbar {
   background-color: var(--dark);
   padding: 2rem;
+  width: 100%;
+  padding-left: 33%;
 }
 
 .navbar a {
   color: var(--light);
   padding: 1rem;
+  margin: auto;
 }
 
 .navbar a:hover {
@@ -147,9 +157,19 @@ body {
   transition: all 0.3s ease-in;
 }
 
-.container .cards li:hover {
+.container .cards .budget_card_list_item:hover {
   transform: translateY(-10px);
-  background-color: var(--dark-grey);
+  background-color: var(--light-primary);
+}
+
+.container .cards .expenses_card_list_item:hover {
+  transform: translateY(-10px);
+  background-color: var(--light-warning);
+}
+
+.container .cards .balance_card_list_item:hover {
+  transform: translateY(-10px);
+  background-color: var(--light-success);
 }
 
 .container .cards li .bx {
@@ -159,21 +179,6 @@ body {
   font-size: 36px;
   align-items: center;
   justify-content: center;
-}
-
-.container .cards li:nth-child(1) .bx {
-  background-color: var(--light-primary);
-  color: var(--primary);
-}
-
-.container .cards li:nth-child(2) .bx {
-  background-color: var(--light-warning);
-  color: var(--warning);
-}
-
-.container .cards li:nth-child(3) .bx {
-  background-color: var(--light-success);
-  color: var(--success);
 }
 
 .container .cards li .info h3 {

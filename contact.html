@@ -13,60 +13,28 @@
     
     <div class="container">
         <header>
-            <h2>Contact</h2>
+            <h3>Contact Us</h3>
             <nav class="navbar">
                 <div class="nav-menu hide">
-                    <a href="./dashboard.html">Dashboard</a>
-                    <a href="./transactions.html">Transactions</a>
-                    <a href="./balance.html">Balance</a>
-                    <a href="./contact.html">Contact</a>
+                    <a href="/dashboard.html">Dashboard</a>
+                    <a href="/transactions.html">Transactions</a>
+                    <a href="/balance.html">Balance</a>
+                    <a href="/contact.html">Contact</a>
                 </div>
             </nav>
         </header>
-        <div class="error_message">
-            <p>Please Enter Budget Amount | More than 0</p>
-        </div>
-        <div class="budget_content">
-            <div class="your_budget">
-                <form>
-                    <label for="budget">Budget Amount: </label>
-                    <input type="number" placeholder="Enter your budget" class="budget_input">
-                    <button id="button_budget" class="button">Calculate</button>
-                </form>
-            </div>
-            <div class="your_expenses">
-                <form>
-                    <label for="expenses">Expense Details: </label>
-                    <input type="text" placeholder="Enter Expense Description" class="expenses_description">
-                    <input type="number" placeholder="Enter Expense Amount" class="expenses_amount">
-                    <button id="button_expenses" class="button">Add Expense</button>
-                </form>
-            </div>
-        </div>
-        <ul class="cards">
-            <li>
-                <i class="bx bx-money"></i>
-                <span class="info">
-                    <h3><span>$</span><span class="budget_card">0</span></h3>
-                    <p>Budget</p>
-                </span>
-            </li>
-            <li>
-                <i class="bx bx-credit-card"></i>
-                <span class="info">
-                    <h3><span>$</span><span class="expenses_card">0</span></h3>
-                    <p>Expenses</p>
-                </span>
-            </li>
-            <li>
-                <i class="bx bx-dollar"></i>
-                <span class="info">
-                    <h3><span>$</span><span class="balance_card">0</span></h3>
-                    <p>Balance</p>
-                </span>
-            </li>
-        </ul>
-    </div>
+
+        <div class="contact_us">
+          <form>
+              <label for="user_name">Your Name: </label>
+              <input type="text" placeholder="" class="name_input">
+              <label for="user_number">Your Phone Number: </label>
+              <input type="text" placeholder="" class="name_input">
+              <label for="user_message">Your Message to Us:</label>
+              <input type="text" placeholder="" class="name_input">
+              <button id="button_message" class="button">Submit</button>
+          </form>
+      </div>
 </body>
 
 <script src="./Dashboard.js"></script>
