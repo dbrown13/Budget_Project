@@ -1,5 +1,4 @@
 "use strict";
-//export {budgetValue};
 
 const errorMessage = document.querySelector(".error_message");
 const budgetInput = document.querySelector(".budget_input");
@@ -15,6 +14,7 @@ const balanceCard = document.querySelector(".balance_card");
 
 let itemList = [];
 let itemId = 0;
+//let summary = new BudgetSummary(0,0,0);
 
 // Button Events
 function buttonEvents() {
@@ -27,10 +27,10 @@ function buttonEvents() {
     budgetFunction();
   })
 
-  buttonExpensesCalc.addEventListener('click', (e) => {
+/*   buttonExpensesCalc.addEventListener('click', (e) => {
     e.preventDefault();
     expensesFunction();
-  })
+  }) */
 
 }
 
@@ -40,14 +40,22 @@ document.addEventListener("DOMContentLoaded", buttonEvents);
 // Budget Function
 function budgetFunction() {
   const budgetValue = budgetInput.value;
-  alert(budgetValue);
+  //alert(budgetValue);
   if (budgetValue == "" || budgetValue < 0) {
     errorMessageFunction("Please enter a budget that is more than 0.");
   } else {
     budgetCard.textContent = budgetValue;
-    budgetInput.value = "";
+
+    //summary.sumBudget = budgetValue;
     showBalance();
+    storeBudget();
+    budgetInput.value = "";
   }
+}
+function storeBudget() {
+  let sumBudget = document.getElementById("budget_input").value;
+  alert("Saved: "+sumBudget);
+  sessionStorage.setItem("sumBudget", sumBudget);
 }
 
 // Show Balance Function
@@ -79,4 +87,3 @@ function errorMessageFunction(message) {
       errorMessage.classList.remove('error')
     }, 2500);
 }
-export {budgetValue};
