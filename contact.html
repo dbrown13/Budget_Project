@@ -25,18 +25,21 @@
         </header>
 
         <div class="contact_us">
-          <form>
+          <form id="contact_form">
               <label for="user_name">Your Name: </label>
-              <input type="text" placeholder="" class="name_input">
+              <input type="text" id="name" placeholder="" class="name_input">
+              <span class="name_error" id="name_error"></span>
               <label for="user_number">Your Email Address: </label>
-              <input type="text" placeholder="" class="name_input">
+              <input type="text" id="email" placeholder="" class="name_input">
+              <span class="email_error" id="email_error"></span>
               <label for="user_message">Your Message to Us:</label>
-              <input type="text" placeholder="" class="name_input">
+              <input type="text" id="message" placeholder="" class="name_input">
+              <span class="message_error" id="message_error"></span>
               <button id="button_message" class="button">Submit</button>
           </form>
       </div>
 </body>
 
-<script src="./Dashboard.js"></script>
+<script src="./Contact.js"></script>
 
 </html>

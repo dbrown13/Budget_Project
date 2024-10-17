@@ -253,3 +253,21 @@ body {
   margin-left: 0.5rem;
   border-radius: 3px;
 }
+
+#button_message {
+  position: absolute;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  padding: 0.2rem 0.6rem;
+  color: var(--light);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  background-color: var(--dark);
+}
+
+#button_message:hover {
+  background-color: var(--light-danger);
+  color: var(--dark);
+}
