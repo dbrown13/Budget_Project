@@ -1,38 +1,5 @@
 "use strict";
 
-/* class BudgetSummary {
-  constructor(sumBudget, sumExpense, sumRemain) {
-    this._sumBudget = sumBudget;
-    this._sumExpense = sumExpense;
-    this._sumRemain = sumRemain;
-  }
-  get sumBudget() {
-    return this._sumBudget;
-  }
-  get sumExpense() {
-    return this._sumExpense; 
-  }
-  get sumRemain() {
-    return this._sumRemain;
-  }
-  set sumBudget(b) {
-    if (typeof b === 'number') {
-      this._sumBudget = b;
-    } else {
-      throw new Error('Budget must be a numer');
-    }
-  }
-  set sumExpense(e) {
-    this._sumExpense = e;
-  }
-  set sumRemain(r) {
-    this._sumRemain = r;
-  }
-  greet() {
-    alert("Hello");
-  }
-} */
-
 const errorMessage = document.querySelector(".error_message");
 const budgetInput = document.querySelector(".budget_input");
 const expensesDesc = document.querySelector(".expenses_description");
