@@ -1,5 +1,4 @@
 "use strict";
-//export {budgetValue};
 
 const errorMessage = document.querySelector(".error_message");
 const budgetInput = document.querySelector(".budget_input");
@@ -176,4 +175,3 @@ function errorMessageFunction(message) {
       errorMessage.classList.remove('error')
     }, 2500);
 }
-//export {budgetValue};

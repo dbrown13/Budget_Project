@@ -1,5 +1,4 @@
 "use strict";
-//import { budgetValue } from './Dashboard.js'; 
 
 const expensesDesc = document.querySelector(".expenses_description");
 const expensesAmount = document.querySelector(".expenses_amount");
