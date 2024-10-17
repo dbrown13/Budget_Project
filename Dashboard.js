@@ -1,4 +1,5 @@
 "use strict";
+//export {budgetValue};
 
 const errorMessage = document.querySelector(".error_message");
 const budgetInput = document.querySelector(".budget_input");
@@ -30,11 +31,12 @@ function buttonEvents() {
     e.preventDefault();
     expensesFunction();
   })
+
 }
 
 document.addEventListener("DOMContentLoaded", buttonEvents);
 
-// Expenses Function
+/* // Expenses Function
 function expensesFunction() {
   let expensesDescValue = expensesDesc.value;
   let expensesAmountValue = expensesAmount.value;
@@ -52,8 +54,12 @@ function expensesFunction() {
       title: expensesDescValue,
       amount: amount,
     };
-    itemId++;
+
+    //itemId++;
     itemList.push(expenses);
+    alert(itemList[itemId].title);
+    alert(itemList[itemId].amount);
+    itemId++;
 
     // Add expenses inside the HTML Page
     addExpenses(expenses);
@@ -63,6 +69,7 @@ function expensesFunction() {
 
 // Add Expenses Function
 function addExpenses(expensesItem) {
+
   const html = `<ul class="table_tr_content">
                     <li data-id=${expensesItem.id}>${expensesItem.id}</li>
                     <li>${expensesItem.title}</li>
@@ -74,6 +81,7 @@ function addExpenses(expensesItem) {
                 </ul>`;
 
   tableRecord.insertAdjacentHTML("beforeend", html);
+
 
   // Edit
   const buttonEdit = document.querySelectorAll('.button_edit');
@@ -124,11 +132,12 @@ function addExpenses(expensesItem) {
       showBalance();
     });
   });
-}
+} */
 
 // Budget Function
 function budgetFunction() {
   const budgetValue = budgetInput.value;
+  alert(budgetValue);
   if (budgetValue == "" || budgetValue < 0) {
     errorMessageFunction("Please enter a budget that is more than 0.");
   } else {
@@ -167,3 +176,4 @@ function errorMessageFunction(message) {
       errorMessage.classList.remove('error')
     }, 2500);
 }
+export {budgetValue};
