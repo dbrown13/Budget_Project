@@ -14,7 +14,6 @@ const balanceCard = document.querySelector(".balance_card");
 
 let itemList = [];
 let itemId = 0;
-//let summary = new BudgetSummary(0,0,0);
 
 // Button Events
 function buttonEvents() {
@@ -39,14 +38,12 @@ document.addEventListener("DOMContentLoaded", buttonEvents);
 
 // Budget Function
 function budgetFunction() {
+  console.log(budgetInput.value);
   const budgetValue = budgetInput.value;
-  //alert(budgetValue);
   if (budgetValue == "" || budgetValue < 0) {
     errorMessageFunction("Please enter a budget that is more than 0.");
   } else {
     budgetCard.textContent = budgetValue;
-
-    //summary.sumBudget = budgetValue;
     showBalance();
     storeBudget();
     budgetInput.value = "";
@@ -54,12 +51,48 @@ function budgetFunction() {
 }
 function storeBudget() {
   let sumBudget = document.getElementById("budget_input").value;
-  alert("Saved: "+sumBudget);
+  console.log("Saved: "+sumBudget);
   sessionStorage.setItem("sumBudget", sumBudget);
 }
-
+function retrieveAll() {
+  console.log("retrieve all");
+  const budgetCard = document.querySelector(".budget_card");
+  const expenseCard = document.querySelector(".expenses_card");
+  const balanceCard = document.querySelector(".balance_card");
+  const sumBudget = sessionStorage.getItem("sumBudget");
+  const sumExpenses = sessionStorage.getItem("sumExpenses");
+  const sumBalance = sumBudget - sumExpenses;
+  budgetCard.textContent = sumBudget;
+  expenseCard.textContent = sumExpenses;
+  balanceCard.textContent = sumBalance;
+}
+function retrieveBudget() {
+  console.log("retrieve budget");
+  const budgetCard = document.querySelector(".budget_card");
+  const sumBudget = sessionStorage.getItem("sumBudget");
+  if (!sumBudget) {
+    console.log("null")
+  } else {
+    console.log("SumBudget:", sumBudget);
+    budgetCard.textContent = sumBudget;
+  }
+}
+function retrieveExpenses() {
+  console.log("retrieve expenses");
+  const expenseCard = document.querySelector(".expenses_card");
+  console.log("expenseCard: "+expenseCard);
+  const sumExpenses = sessionStorage.getItem("sumExpenses");
+  if (!sumExpenses) {
+    console.log("null")
+  } else {
+    console.log("SumExpenses:", sumExpenses);
+    expenseCard.textContent = sumExpenses;
+  }
+}
 // Show Balance Function
 function showBalance() {
+  const balanceCard = document.querySelector(".balance_card");
+  const budgetCard = document.querySelector(".budget_card");
   const expenses = totalExpenses();
   const total = parseInt(budgetCard.textContent) - expenses;
   balanceCard.textContent = total;
@@ -67,6 +100,8 @@ function showBalance() {
 
 // Total Expenses Function
 function totalExpenses() {
+  let expenseCard = document.querySelector(".expenses_card");
+
   let total = 0;
 
   if (itemList.length > 0) {
